@@ -37,7 +37,23 @@ class PaymentServiceImplTest {
         Payment savedPayment = paymentService.newPayment(payment);
         StateMachine<PaymentState, PaymentEvent> sm = paymentService.preAuth(savedPayment.getId());
         Payment preAuthPayment = paymentRepository.getOne(savedPayment.getId());
-        System.out.println(sm.getState().getId());
-        System.out.println(preAuthPayment);
+        System.out.println("\n\n" + sm.getState().getId());
+        System.out.println("\n\n"+ preAuthPayment);
+        Payment p = paymentRepository.getOne(savedPayment.getId());
+        System.out.println("\n\n" + p);
+        System.out.println("\nWell?");
+    }
+
+    @Transactional
+    @Test
+    void preAuth2() {
+        Payment savedPayment = paymentService.newPayment(payment);
+        StateMachine<PaymentState, PaymentEvent> sm = paymentService.preAuth(savedPayment.getId());
+        Payment preAuthPayment = paymentRepository.getOne(savedPayment.getId());
+        System.out.println("\n\n" + sm.getState().getId());
+        System.out.println("\n\n"+ preAuthPayment);
+        Payment p = paymentRepository.getOne(savedPayment.getId());
+        System.out.println("\n\n" + p);
+        System.out.println("\npreAuth2: Well?");
     }
 }

@@ -31,6 +31,12 @@ public class PaymentServiceImpl implements PaymentService {
         return repository.save(payment);
     }
 
+
+    @Override
+    public Payment getPaymentById(Long paymentId) {
+        return repository.getOne(paymentId);
+    }
+
     @Transactional
     @Override
     public StateMachine<PaymentState, PaymentEvent> preAuth(Long paymentId) {
